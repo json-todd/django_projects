@@ -1,6 +1,6 @@
 {% extends "polls/base.html" %}
 
-{% block title}Detail{% endblock %}
+{% block title %}Detail{% endblock %}
 
 {% block content %}
   <h1>{{ question.question_text }}</h1>
@@ -25,5 +25,6 @@
         <br>
       {% endfor %}
     </fieldset>
+    <input type="submit" value="Vote">
   </form>
 {% endblock %}
