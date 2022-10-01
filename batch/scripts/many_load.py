@@ -22,11 +22,6 @@ def run():
     for row in reader:
         print(row[0])
 
-        category, is_created = Category.objects.get_or_create(name=row[7])
-        state, is_created = State.objects.get_or_create(name=row[8])
-        region,is_created  = Region.objects.get_or_create(name=row[9])
-        iso, is_created  = Iso.objects.get_or_create(name=row[10])
-
         name = row[0]; desc = row[1]
         justify = row[2] if row[2] != 'NaN' else None
 
@@ -42,6 +37,12 @@ def run():
         try: area = float(row[6])
         except: area = None
 
+
+        _Category, is_created = Category.objects.get_or_create(name=row[7])
+        _State, is_created = State.objects.get_or_create(name=row[8])
+        _Region,is_created  = Region.objects.get_or_create(name=row[9])
+        _Iso, is_created  = Iso.objects.get_or_create(name=row[10])
+
         site = Site(name = name,
                     year = year,
                     longitude = longi,
@@ -49,9 +50,9 @@ def run():
                     description = desc,
                     justification = justify,
                     area_hectares = area,
-                    category = category,
-                    state = state,
-                    region = region,
-                    iso = iso,
+                    category = _Category,
+                    state = _State,
+                    region = _Region,
+                    iso = _Iso,
                   )
         site.save()
