@@ -7,6 +7,14 @@ from django.urls import reverse_lazy
 from autos.models import Auto, Make
 from autos.forms import MakeForm
 
+class MainView(LoginRequiredMixin, View):
+    def get(self, request):
+        make_count = Make.objects.all().count()
+        auto_list = Auto.objects.all()
+
+        ctx = {'make_count': make_count, 'auto_list': auto_list}
+        return render(request, 'autos/auto_list.html', ctx)
+
 class MakeView(LoginRequiredMixin, View):
     def get(self, request):
         make_list = Make.objects.all()
