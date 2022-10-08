@@ -1,12 +1,25 @@
 from django.db import models
-
+from django.core.validators import MinLengthValidator
 # Create your models here.
 
 class Make(models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(
+        max_length = 200,
+        help_text='Enter a make as manufacturer of cars',
+        validators=[MinLengthValidator(2, "Make must be greater than 1 character")]
+    )
+
+    def __str__(self):
+        return self.name
 
 class Auto(models.Model):
-    nickname = models.CharField(max_length = 100)
-    mileage = models.IntegerField()
+    nickname = models.CharField(
+        max_length = 200,
+        validators=[MinLengthValidator(2,"Nickname must be greater than 1 character")]
+    )
+    mileage = models.PositiveIntegerField()
     comments = models.CharField(max_length = 500)
     make = models.ForeignKey(Make, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.nickname
