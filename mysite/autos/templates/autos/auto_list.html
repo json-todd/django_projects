@@ -7,9 +7,9 @@
     {% for auto in auto_list %}
       <li>
         {{ auto.nickname }} ({{ auto.make }})
-        (<a href="{% url 'autos:auto_update' %}">Update</a> |
-        <a href="{% url 'autos:auto_delete' %}">Delete</a>) <br/>
-        {{ autos.comments }} ({{auto.mileage }} miles)
+        (<a href="{% url 'autos:auto_update' auto.id %}">Update</a> |
+        <a href="{% url 'autos:auto_delete' auto.id %}">Delete</a>) <br/>
+        {{ auto.comments }} ({{auto.mileage }} miles)
       </li>
     {% endfor %}
   </ul>
