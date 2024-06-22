@@ -29,7 +29,7 @@ class CatCreate(LoginRequiredMixin, CreateView):
 class CatUpdate(LoginRequiredMixin, UpdateView):
     pass
 
-class CatDelete(LoginRequireMixin, DeleteView):
+class CatDelete(LoginRequiredMixin, DeleteView):
     model = Cat
     fields = '__all__'
     success_urls = reverse_lazy('cats:all')
