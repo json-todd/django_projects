@@ -31,7 +31,7 @@ class CatUpdate(LoginRequiredMixin, UpdateView):
 class CatDelete(LoginRequiredMixin, DeleteView):
     model = Cat
     fields = '__all__'
-    success_urls = reverse_lazy('cats:all')
+    success_url = reverse_lazy('cats:all')
 
 class BreedView(LoginRequiredMixin, View):
     def get(self, request):
