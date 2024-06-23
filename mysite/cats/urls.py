@@ -5,7 +5,7 @@ app_name = 'cats'
 urlpatterns = [
     path('', views.CatView.as_view(), name='all'),
     path('cat/create/', views.CatCreate.as_view(), name='cat_create'),
-    path('cat/<int:pk/update', views.CatUpdate.as_view(), name='cat_update'),
+    path('cat/<int:pk>/update', views.CatUpdate.as_view(), name='cat_update'),
     path('cat/<int:pk>/delete', views.CatDelete.as_view(), name='cat_delete'),
     
     path('breed/', views.BreedView.as_view(), name='breed_view'),
