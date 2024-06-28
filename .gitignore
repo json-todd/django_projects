@@ -2,3 +2,5 @@ __pycache__
 *.swp
 *.sqlite3
 django_superuser_cred.txt
+venv*
+migrations
